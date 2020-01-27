@@ -1,0 +1,32 @@
+using System;
+
+namespace POO_Delegate
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ShowMoney showMoney = Dollars;
+            Console.WriteLine("quelle somme (euros) voulez vous convertir en dollar ? ");
+            double x = Convert.ToDouble(Console.ReadLine());            
+            Console.WriteLine(showMoney(x));
+            
+            Console.WriteLine("quelle somme (dollars) voulez vous convertir en euro ? ");
+            double y = Convert.ToDouble(Console.ReadLine());
+            showMoney = Euros;
+            Console.WriteLine(showMoney(y));
+        }
+
+        public delegate double ShowMoney(double x);
+
+        public static double Dollars(double x)
+        {
+            return x * 1.1;
+        }
+
+        public static double Euros(double x)
+        {
+            return x / 1.1;
+        }
+    }
+}
