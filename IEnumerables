@@ -1,0 +1,32 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace POO_IEnumerables
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] IntegerArray = new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            Console.WriteLine("Array to use : ");
+            for (int i = 0; i< IntegerArray.Length; i++)
+            {
+                Console.WriteLine(IntegerArray[i]);
+            }
+
+            Console.WriteLine("Choose an integer n : ");
+            int integer=  Convert.ToInt32(Console.ReadLine());
+
+            IEnumerable <int> IntegerSelected = IntegerArray.Where((x) => x <= integer);
+            int sum = IntegerSelected.Aggregate((x, y) => x + y);
+            double mean = IntegerSelected.Average();
+
+            Console.WriteLine("The mean of is " + mean);
+
+        }
+
+
+    }
+}
