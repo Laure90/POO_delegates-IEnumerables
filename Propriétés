@@ -1,0 +1,74 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Encapsulation
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            House house = new House();
+            Room room = new Room();
+            Door houseDoor = new Door();
+            Door roomDoor = new Door();
+            house.AddDoor(houseDoor);
+            room.AddDoor(roomDoor);
+            house.AddRoom(room);
+        }
+    }
+
+    public class House
+    {
+        private List<Door> _doors = new List<Door>();
+        private List<Room> _rooms = new List<Room>();
+
+        public List<Door> Doors { get => _doors; }
+        public List<Room> Rooms { get => _rooms; }
+
+        public void AddDoor(Door doors) => _doors.Add(doors);
+
+        public void AddRoom(Room room) => Rooms.Add(room);
+
+    }
+
+    public class Room
+    {
+        private List<Door> _doors = new List<Door>();
+
+        public List<Door> Doors { get => _doors; }
+
+        public void AddDoor(Door door) => Doors.Add(door);
+
+    }
+
+    public class Door
+    {
+        private bool _isOpen;
+        public bool IsOpen { get; set; } = false;
+
+        public void Open()
+        {
+            if (IsOpen)
+            {
+                Console.WriteLine("Door already opened. Ain't done anything.");
+            }
+            else
+            {
+                IsOpen = true;
+            }
+        }
+
+        public void Close()
+        {
+            if (!IsOpen)
+            {
+                Console.WriteLine("Door already closed. Ain't done anything.");
+            }
+            else
+            {
+                IsOpen = false;
+            }
+        }
+    }
+}
